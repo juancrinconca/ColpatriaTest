@@ -20,6 +20,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 import org.testng.Reporter;
+import org.testng.annotations.BeforeSuite;
+
 import Parameters.Parameters;
 
 /**Class general fuctions.
@@ -41,7 +43,7 @@ public class GenFunctions {
 	public static void openBrowser(String url, String browser) throws Exception {
 		switch(browser) {
 		case "IE":
-			File ieFile = new File("E:/drivers_selenium/IEDriverServer.exe");
+			File ieFile = new File(Parameters.PathDriver + "/IEDriverServer.exe");
 			System.setProperty("webdriver.ie.driver", ieFile.getAbsolutePath());
 			DesiredCapabilities ieCaps = DesiredCapabilities.internetExplorer();
 			ieCaps.setCapability(InternetExplorerDriver.INITIAL_BROWSER_URL, url);
@@ -49,15 +51,15 @@ public class GenFunctions {
 			driver = new InternetExplorerDriver(ieCaps);
 			break;
 		case "CH":
-			System.setProperty("webdriver.chrome.driver", "E:/drivers_selenium/chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", Parameters.PathDriver + "/chromedriver.exe");
 			driver = new ChromeDriver();
 			break;
 		case "FF":
-			System.setProperty("webdriver.gecko.driver", "E:/drivers_selenium/geckodriver.exe");
+			System.setProperty("webdriver.gecko.driver", Parameters.PathDriver + "/geckodriver.exe");
 			driver = new FirefoxDriver();
 			break;
 		case "ED":
-			System.setProperty("webdriver.edge.driver", "E:/drivers_selenium/MicrosoftWebDriver.exe");
+			System.setProperty("webdriver.edge.driver", Parameters.PathDriver + "/MicrosoftWebDriver.exe");
 			driver = new EdgeDriver();
 			break;
 		}
@@ -194,5 +196,13 @@ public class GenFunctions {
 				break;			
 		}
 		return range;
+	}
+	
+	/**Set parameters before start execution*/
+	@BeforeSuite(alwaysRun = true)
+	public static void beforeRun() {
+		Parameters.startTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
+		File folders = new File(".\\test-output\\Screenshots\\");
+		folders.mkdirs();
 	}
 }

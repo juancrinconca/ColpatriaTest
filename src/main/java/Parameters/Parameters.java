@@ -10,10 +10,11 @@ public class Parameters {
 			"transition: all .3s ease-in;opacity: 1;transform: scale(2.99);-ms-transform: scale(2.99); /* IE 9 */-webkit-transform: scale(2.99); /* Safari and Chrome */}</style>";
 	public static String startTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
 	public static String endTime = null;
+	public static String PathDriver = "E:/drivers_selenium"; 
 	
 	//Login Parameters
 	public static String url = "https://www.carnival.com/";
-	public static String browser = "FF";
+	public static String browser = "CH";
 	public static int timeout = 10;
 	public static String user = "colpatria";
 	public static String Password = "abc123";
