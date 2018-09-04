@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+  
+<suite name="CARNIVAL" verbose="1" >
+  <test name="TC1 Login" >
+    <classes>
+       <class name="TestCases.TC1_Login" />
+    </classes>
+  </test>
+  <test name="TC2 CruiseSearch">
+    <classes>
+      <class name="TestCases.TC2_CruiseSearch"/>
+    </classes>
+  </test>
+  <test name="TC3 SailFlow">
+    <classes>
+      <class name="TestCases.TC3_SailFlow"/>
+    </classes>
+  </test>
+</suite>
